@@ -218,6 +218,23 @@ section.block{padding-block:88px;border-top:1px solid var(--line)}
 .feat li{display:flex;gap:8px}
 .feat li::before{content:"✓";color:var(--ok);font-weight:700}
 
+/* oviqua: demo video + phone mockup strip */
+.proj.oviqua{flex-wrap:wrap}
+.oviqua-vis{background:#1A1210;display:flex;align-items:center;justify-content:center}
+.oviqua-vis video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.mockups{flex:1 0 100%;min-width:0;border-top:1px solid var(--line);background:linear-gradient(160deg,#4A2C24 0%,#24150F 100%);padding:22px 0 26px}
+.mock-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 26px 16px;font-family:var(--f-mono);font-size:12px;color:#E9D9CF}
+.mock-nav{display:flex;gap:6px}
+.mock-nav button{font:inherit;font-size:14px;width:32px;height:32px;border-radius:8px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.2);color:#F5EBE4;cursor:pointer}
+.mock-nav button:hover{border-color:#D9A85B;color:#D9A85B}
+.mock-strip{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:26px;padding:4px 26px 10px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent}
+.phone{flex:none;width:168px;margin:0;scroll-snap-align:start}
+.phone .frame{border-radius:26px;overflow:hidden;border:5px solid #0B0B0B;background:#0B0B0B;box-shadow:0 18px 36px -16px rgba(0,0,0,.7)}
+.phone img{display:block;width:100%;height:auto;aspect-ratio:1179/2556}
+.phone figcaption{margin-top:10px;font-family:var(--f-mono);font-size:11.5px;color:#E9D9CF;text-align:center}
+@media (max-width:900px){.proj.wide.oviqua{flex-wrap:nowrap}.proj.wide.oviqua .visual{aspect-ratio:16/9}}
+@media (max-width:560px){.phone{width:140px}.mock-head,.mock-strip{padding-inline:16px}.mock-strip{scroll-padding-inline:16px}}
+
 /* P&ID drawing */
 .pid .pipe{stroke:var(--ink);stroke-width:2;fill:none}
 .pid .flow{stroke:var(--accent);stroke-width:2.5;fill:none;stroke-dasharray:6 10;animation:flow 1.4s linear infinite}
@@ -407,6 +424,7 @@ footer .mono{font-size:13px}
       <div class="filters" role="group" aria-label="Filter projects">
         <button class="filter" aria-pressed="true" data-f="all">all</button>
         <button class="filter" aria-pressed="false" data-f="personal">personal</button>
+        <button class="filter" aria-pressed="false" data-f="freelance">freelance</button>
         <button class="filter" aria-pressed="false" data-f="enterprise">enterprise</button>
         <button class="filter" aria-pressed="false" data-f="3d">3d / ar-vr</button>
         <button class="filter" aria-pressed="false" data-f="security">security</button>
@@ -440,6 +458,49 @@ footer .mono{font-size:13px}
             <div class="plinks">
               <a class="plink" href="https://play.google.com/store/apps/details?id=com.yogeshkumawat.taskora" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3.5v17l9-8.5-9-8.5zm10.4 7.2 2.6-2.4-11-6.3 8.4 8.7zm0 2.6-8.4 8.7 11-6.3-2.6-2.4zm3.9-3.7-2.9 2.4 2.9 2.4 2.8-1.6c.8-.5.8-1.1 0-1.6l-2.8-1.6z"/></svg>Get it on Google Play</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Oviqua (freelance) -->
+        <article class="proj wide oviqua" data-tags="freelance">
+          <div class="visual oviqua-vis">
+            <video src="assets/oviqua/oviqua_intro.mp4#t=0.1" controls playsinline preload="metadata" aria-label="Oviqua jewellery app demo video"></video>
+          </div>
+          <div class="pbody">
+            <div class="pkicker"><b>Freelance project</b><span>iOS · Android</span></div>
+            <h3>Oviqua</h3>
+            <p>A jewellery marketplace I built for a client. Shoppers find nearby jewellery stores, browse each store's collection and send enquiries, while store owners manage their listings from a separate vendor side of the app.</p>
+            <ul class="feat">
+              <li>Store discovery by location</li>
+              <li>Search, filters and sorting</li>
+              <li>Collections with purity, weight and price</li>
+              <li>Enquiries, call and WhatsApp</li>
+              <li>Ratings and reviews</li>
+              <li>Favourites and push notifications</li>
+              <li>Map-based location picker</li>
+              <li>Vendor dashboard and store setup</li>
+            </ul>
+            <div class="chips"><span class="chip">BLoC</span><span class="chip">Clean Architecture</span><span class="chip">go_router</span><span class="chip">Firebase Messaging</span><span class="chip">Google Maps</span></div>
+          </div>
+          <div class="mockups">
+            <div class="mock-head"><span>13 screens · scroll to browse</span>
+              <div class="mock-nav"><button type="button" data-dir="-1" aria-label="Previous screens">←</button><button type="button" data-dir="1" aria-label="Next screens">→</button></div>
+            </div>
+            <div class="mock-strip" id="oviquaStrip" tabindex="0" aria-label="Oviqua app screenshots">
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_01.jpg" loading="lazy" alt="Onboarding screen: Find Your Dream Jewellery"></div><figcaption>Onboarding</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_02.jpg" loading="lazy" alt="Home screen with special offers and newly added stores"></div><figcaption>Home</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_03.jpg" loading="lazy" alt="Store detail with image gallery, rating, hours and starting price"></div><figcaption>Store detail</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_04.jpg" loading="lazy" alt="Store jewellery collection with prices and discounts"></div><figcaption>Collection</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_05.jpg" loading="lazy" alt="Product sheet showing type, purity, weight and an enquire button"></div><figcaption>Product</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_06.jpg" loading="lazy" alt="Ratings breakdown and customer reviews"></div><figcaption>Reviews</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_07.jpg" loading="lazy" alt="Enquiry sheet for sending a message to the store"></div><figcaption>Enquiry</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_08.jpg" loading="lazy" alt="Favourite stores list with a success toast"></div><figcaption>Favourites</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_09.jpg" loading="lazy" alt="Notifications list with all and unread filters"></div><figcaption>Notifications</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_10.jpg" loading="lazy" alt="Profile screen with edit profile and information links"></div><figcaption>Profile</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_11.jpg" loading="lazy" alt="Map location picker with search and selected address"></div><figcaption>Location</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_12.jpg" loading="lazy" alt="Store search with filter chips for nearest, top rated, price and newest"></div><figcaption>Search</figcaption></figure>
+              <figure class="phone"><div class="frame"><img src="assets/oviqua/screen_13.jpg" loading="lazy" alt="Contact us screen with call, WhatsApp and email options"></div><figcaption>Contact</figcaption></figure>
             </div>
           </div>
         </article>
@@ -936,6 +997,12 @@ $$(".filter").forEach(b=>b.addEventListener("click", ()=>{
   $$("#projectGrid .proj").forEach(p=>{ p.hidden = !(f==="all" || p.dataset.tags.split(" ").includes(f)); });
 }));
 $$(".copy").forEach(b=>b.addEventListener("click", ()=>copyText(b.dataset.copy, "Command copied", b.previousElementSibling)));
+
+/* Oviqua mockup strip arrows */
+$$(".mock-nav button").forEach(b=>b.addEventListener("click", ()=>{
+  const s = $("#oviquaStrip");
+  s.scrollBy({left: Number(b.dataset.dir) * s.clientWidth * 0.8, behavior: "smooth"});
+}));
 
 /* NFT waveform bars */
 (function(){
